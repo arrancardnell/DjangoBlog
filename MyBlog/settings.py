@@ -27,6 +27,13 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+# SMTP Email settings
+
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = 'acardnell.blog@gmail.com'
+EMAIL_HOST_PASSWORD = 'MyFamily2016'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
 
 # Application definition
 
