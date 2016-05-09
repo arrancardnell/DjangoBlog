@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/1.9/ref/settings/
 """
 
 import os
+from .local_settings import *
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -26,14 +27,6 @@ SECRET_KEY = '*32mapj&#vtm64dk$a3j^=-9d_g40@hb(8j%exi6805g1y_&3%'
 DEBUG = True
 
 ALLOWED_HOSTS = []
-
-# SMTP Email settings
-
-EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_HOST_USER = 'acardnell.blog@gmail.com'
-EMAIL_HOST_PASSWORD = 'MyFamily2016'
-EMAIL_PORT = 587
-EMAIL_USE_TLS = True
 
 # Application definition
 
