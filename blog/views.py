@@ -71,6 +71,7 @@ def post_share(request, post_id):
     # Retrieve post by ID
     post = get_object_or_404(Post, id=post_id, status='published')
     sent = False
+    cd = None
 
     if request.method == 'POST':
         # Form was submitted
