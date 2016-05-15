@@ -7,8 +7,3 @@ ADMINS = (
 )
 
 ALLOWED_HOSTS = ['www.codingduck.co.uk', 'codingduck.co.uk']
-
-DATABASES = {
-    'default': {
-    }
-}
