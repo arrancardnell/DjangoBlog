@@ -1,4 +1,5 @@
 from .base import *
+from .database_settings import *
 
 DEBUG = False
 
