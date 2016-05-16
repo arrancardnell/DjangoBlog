@@ -3,3 +3,5 @@ __pycache__
 *.pyc
 email_settings.py
 database_settings.py
+pro_database.py
+local_database.py

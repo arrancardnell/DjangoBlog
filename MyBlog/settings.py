@@ -11,9 +11,10 @@ https://docs.djangoproject.com/en/1.9/ref/settings/
 """
 import os
 from .email_settings import *
+from .pro_database import *
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(os.path.join(__file__, os.pardir))))
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 
 # Quick-start development settings - unsuitable for production
@@ -25,7 +26,11 @@ SECRET_KEY = '*32mapj&#vtm64dk$a3j^=-9d_g40@hb(8j%exi6805g1y_&3%'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ADMINS = (
+    ('Arran', 'codingduckblog@gmail.com')
+)
+
+ALLOWED_HOSTS = ['*']
 
 SITE_ID = 1
 
