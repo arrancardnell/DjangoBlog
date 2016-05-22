@@ -10,9 +10,9 @@
     <link href="{% static 'css/blog.css' %}" rel="stylesheet">
 </head>
 <body>
-    <tr>
+    <div class="container-fluid">
         {% include "blog/navigation.html" %}
-    </tr>
+    </div>
     <div id="content">
         {% block content %}
         {% endblock %}
