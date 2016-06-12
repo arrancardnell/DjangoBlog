@@ -10,8 +10,30 @@
     <link href="{% static 'css/blog.css' %}" rel="stylesheet">
 </head>
 <body>
-    <div class="container-fluid">
-        {% include "blog/navigation.html" %}
+    <div id="header">
+        <span class="logo">CodingDuck</span>
+        {% if request.user.is_authenticated %}
+            <ul class="menu">
+                <li {% if section == "post_list" %}class="selected"{% endif %}>
+                    <a href="{% url 'blog:post_list' %}">Home</a>
+                </li>
+                <li {% if section == "post_list" %}class="selected"{% endif %}>
+                    <a href="{% url 'blog:post_list' %}">Blog</a>
+                </li>
+                <li {% if section == "about" %}class="selected"{% endif %}>
+                    <a href="#">About</a>
+                </li>
+            </ul>
+        {% endif %}
+
+        <span class="user">
+            {% if request.user.is_authenticated %}
+                Hello {{ request.user.first_name }},
+                <a href="{% url 'blog:logout' %}">Logout</a>
+            {% else %}
+                <a href="{% url 'blog:login' %}">Log-in</a>
+            {% endif %}
+        </span>
     </div>
     <div id="content">
         {% block content %}
