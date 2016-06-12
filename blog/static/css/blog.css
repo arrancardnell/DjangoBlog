@@ -81,7 +81,9 @@ ol {
 }
 
 #content {
-    padding:30px 100px;
+    float:left;
+    width:60%;
+    padding:0 0 0 30px;
 }
 
 #sidebar { 
