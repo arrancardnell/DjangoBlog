@@ -12,7 +12,6 @@
 <body>
     <div id="header">
         <span class="logo">CodingDuck</span>
-        {% if request.user.is_authenticated %}
             <ul class="menu">
                 <li {% if section == "post_list" %}class="selected"{% endif %}>
                     <a href="{% url 'blog:post_list' %}">Home</a>
@@ -24,7 +23,6 @@
                     <a href="#">About</a>
                 </li>
             </ul>
-        {% endif %}
 
         <span class="user">
             {% if request.user.is_authenticated %}
