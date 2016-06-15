@@ -1,3 +1,4 @@
+from django.conf import settings
 from django.core.urlresolvers import reverse
 from django.db import models
 from django.utils import timezone
@@ -59,3 +60,11 @@ class Comment(models.Model):
 
     def __str__(self):
         return 'Comment by {} on {}'.format(self.name, self.post)
+
+
+class Profile(models.Model):
+    user = models.OneToOneField(settings.AUTH_USER_MODEL)
+    date_of_birth = models.DateField(blank=True, null=True)
+
+    def __str__(self):
+        return 'Profile for user {}'.format(self.user.username)
