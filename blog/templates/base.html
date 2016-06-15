@@ -29,6 +29,7 @@
                 Hello {{ request.user.first_name }},
                 <a href="{% url 'blog:logout' %}">Logout</a>
             {% else %}
+                <a href="{% url 'blog:register' %}">Sign-up</a> |
                 <a href="{% url 'blog:login' %}">Log-in</a>
             {% endif %}
         </span>
