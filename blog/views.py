@@ -175,3 +175,6 @@ def edit(request):
         profile_form = ProfileEditForm(instance=request.user.profile)
     return render(request, 'blog/edit.html', {'user_form': user_form,
                                                  'profile_form': profile_form})
+
+def about(request):
+    return render(request, 'blog/about.html')

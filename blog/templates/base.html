@@ -20,7 +20,7 @@
                     <a href="{% url 'blog:post_list' %}">Blog</a>
                 </li>
                 <li {% if section == "about" %}class="selected"{% endif %}>
-                    <a href="#">About</a>
+                    <a href="{% url 'blog:about' %}">About</a>
                 </li>
             </ul>
 

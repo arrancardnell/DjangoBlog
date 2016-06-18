@@ -47,4 +47,7 @@ urlpatterns = [
 
     # edit
     url(r'^edit/$', views.edit, name='edit'),
+
+    #about
+    url(r'^about/$', views.about, name='about')
 ]
