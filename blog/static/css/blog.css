@@ -11,12 +11,12 @@ p {
 }
 
 a {
-    color:#B22222;
+    color:#FF6347;
     text-decoration:none;
 }
 
 a:hover {
-    color:#00a74f;
+    color:#B22222;
 }
 
 h1, h2, h3, h4, h5 , h6 { font-family: 'Muli', sans-serif; font-weight:normal; color:#2F4F4F}
@@ -38,28 +38,23 @@ ol {
 #header {
     padding:10px 30px;
     font-size:20px;
-    background:#008B8B;
-    color:#fff;
-    border-bottom:4px solid #B22222;
+    background:#44D1CC;
+    color:#FFFFFF;
+    border-bottom:4px solid #FF6347;
     overflow:auto;
 }
 
 #header .logo {
     padding:4px 10px;
     float:left;
-    color: #FFF;
+    color: #FFFFFF;
     font-size:28px;
     margin-right:10%;
 }
 
-.centre-word {
-    font-size: 30px;
+.highlight-text {
     font-weight: bold;
-    color: #b22222;
-}
-
-.list-centre-word {
-    color: #FF4500;
+    color: #FF6347;
 }
 
 #header ul.menu {
@@ -79,10 +74,10 @@ ol {
 }
 
 #header a {
-    color:#f3f7cc;
+    color:#FFFFFF;
 }
 #header a:hover {
-    color:#B22222;
+    color:#FF6347;
 }
 
 #header .user {
