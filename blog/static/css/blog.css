@@ -50,7 +50,7 @@ ol {
     padding:4px 10px;
     float:left;
     color: #2F4F4F;
-    font-size:32px;
+    font-size:30px;
 
     margin-right:10%;
 }
@@ -61,6 +61,8 @@ ol {
 }
 
 .highlight-logo-text {
+    font-family: 'Nova Flat', cursive;
+    font-size: 34px;
     color: #FF6347;
 }
 
