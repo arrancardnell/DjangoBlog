@@ -4,6 +4,7 @@ body {
     margin:0;
     padding:0;
     font-family:helvetica, sans-serif;
+    background-color: #FFFFFF;
 }
 
 p {
@@ -11,16 +12,16 @@ p {
 }
 
 a {
-    color:#006400;
+    color:#FF6347;
     text-decoration:none;
 }
 
 a:hover {
-    color:#32CD32;
+    color:#FF4500;
     text-decoration: none;
 }
 
-h1, h2, h3, h4, h5 , h6 { font-family: 'Muli', sans-serif; font-weight:normal; color:#006400}
+h1, h2, h3, h4, h5 , h6 { font-family: 'Muli', sans-serif; font-weight:normal; color:#2F4F4F}
 
 h1 {
     border-bottom:1px solid #bbb;
@@ -39,30 +40,28 @@ ol {
 #header {
     padding:10px 30px;
     font-size:20px;
-    background:#44D1CC;
-    color:#FFFFFF;
-    border-bottom:2px solid #006400;
+    background:#DCDCDC;
+    color:#2F4F4F;
+    border-bottom:2px solid #FF6347;
     overflow:auto;
 }
 
 #header .logo {
     padding:4px 10px;
     float:left;
-    color: #FFFFFF;
-    text-shadow: #006400 2px 2px 1px;
-    font-size:28px;
+    color: #2F4F4F;
+    font-size:32px;
+
     margin-right:10%;
 }
 
 .highlight-text {
     font-weight: bold;
-    color: #006400;
+    color: #FF6347;
 }
 
 .highlight-logo-text {
-    font-weight: bold;
-    color: #98FB98;
-    text-shadow: #006400 2px 2px 1px, #006400 -1px -1px 5px;
+    color: #FF6347;
 }
 
 #header ul.menu {
@@ -73,7 +72,7 @@ ol {
 }
 #header ul.menu li {
     float:left;
-    padding:10px 10px;
+    padding:15px 10px;
 }
 
 #header ul.menu li.selected a, #header ul.menu li.selected a:hover {
@@ -82,15 +81,15 @@ ol {
 }
 
 #header a {
-    color:#FFFFFF;
+    color:#2F4F4F;
 }
 #header a:hover {
-    color:#006400;
+    color:#FF4500;
 }
 
 #header .user {
     float:right;
-    padding-top:10px;
+    padding-top:15px;
 }
 
 #content {
@@ -103,7 +102,7 @@ ol {
     float:right;
     width:30%;
     padding:10px;
-    background:#efefef; 
+    background:#F5F5F5;
     height:100%;
 }
 
