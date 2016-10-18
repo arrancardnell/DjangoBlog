@@ -57,7 +57,12 @@ ol {
 .highlight-text {
     font-weight: bold;
     color: #FF6347;
-    text-shadow: #FFFFFF 2px 2px 1px;
+}
+
+.highlight-logo-text {
+    font-weight: bold;
+    color: #FF6347;
+    text-shadow: #FFFFFF 2px 2px 1px, #FFFFFF -1px -1px 3px;
 }
 
 #header ul.menu {
