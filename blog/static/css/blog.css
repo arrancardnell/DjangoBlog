@@ -17,6 +17,7 @@ a {
 
 a:hover {
     color:#B22222;
+    text-decoration: none;
 }
 
 h1, h2, h3, h4, h5 , h6 { font-family: 'Muli', sans-serif; font-weight:normal; color:#2F4F4F}
@@ -48,6 +49,7 @@ ol {
     padding:4px 10px;
     float:left;
     color: #FFFFFF;
+    text-shadow: #FF6347 2px 2px 1px;
     font-size:28px;
     margin-right:10%;
 }
@@ -55,7 +57,7 @@ ol {
 .highlight-text {
     font-weight: bold;
     color: #FF6347;
-    text-shadow: #FFFFFF 1px 1px 2px;
+    text-shadow: #FFFFFF 2px 2px 1px;
 }
 
 #header ul.menu {
