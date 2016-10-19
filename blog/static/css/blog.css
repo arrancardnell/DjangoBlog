@@ -51,6 +51,8 @@ ol {
     float:left;
     color: #2F4F4F;
     font-size:30px;
+    font-family: 'Nova Flat', cursive;
+    word-spacing: -4px;
 
     margin-right:10%;
 }
@@ -100,6 +102,12 @@ ol {
     padding:0 0 0 30px;
 }
 
+#post-detail {
+    margin: auto;
+    width: 70%;
+    text-align: center;
+}
+
 #sidebar { 
     float:right;
     width:30%;
@@ -146,8 +154,8 @@ input, textarea {
 }
 input[type=submit], a.button {
     font-weight:bold;
-    background:#12c064;
-    color:#fff;
+    background:#2F4F4F;
+    color:#FFFFFF;
     padding:10px 20px;
     font-size:14px;
     text-transform:uppercase;

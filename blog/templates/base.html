@@ -40,26 +40,7 @@
             {% endfor %}
         </ul>
     {% endif %}
-    <div id="content">
-        {% block content %}
-        {% endblock %}
-    </div>
-    <div id="sidebar">
-        <h2>Highlights</h2>
-            <p>Welcome to <span class="highlight-text">Let's Code Django</span>!
-                There are <span class="highlight-text">{% total_posts %}</span> posts so far.</p>
-            <p><a href="{% url 'blog:post_feed' %}">Subscribe to my RSS feed</a></p>
-        <h3>Latest posts</h3>
-        {% show_latest_posts 3 %}
-        <h3>Most commmented posts</h3>
-        {% get_most_commented_posts as most_commented_posts %}
-        <ul>
-            {% for post in most_commented_posts %}
-            <li>
-                <a href="{{ post.get_absolute_url }}">{{ post.title }}</a>
-            </li>
-            {% endfor %}
-        </ul>
-    </div>
+    {% block content %}{% endblock %}
+    {% block sidebar %}{% endblock %}
 </body>
 </html>
