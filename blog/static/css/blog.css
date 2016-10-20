@@ -127,6 +127,15 @@ p.date {
     font-style: italic;
 }
 
+#post-detail p.date {
+    text-align: center;
+}
+
+#similar-posts h2 {
+    border-top:1px solid #bbb;
+    padding-top: 10px;
+}
+
 .nav-link {
     width:160px;
 }
