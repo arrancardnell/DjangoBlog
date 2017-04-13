@@ -15,8 +15,10 @@ Including another URLconf
 """
 from django.conf.urls import include, url
 from django.contrib import admin
+from django.contrib.auth import urls as auth_urls
 from django.contrib.sitemaps.views import sitemap
 from blog.sitemaps import PostSitemap
+from blog import urls as blog_urls
 
 sitemaps = {
     'posts': PostSitemap,
@@ -24,10 +26,8 @@ sitemaps = {
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^', include('django.contrib.auth.urls')),
-    url(r'^', include('blog.urls',
-                           namespace='blog',
-                           app_name='blog')),
+    url(r'^', include(auth_urls)),
+    url(r'^', include(blog_urls, namespace='blog')),
     url(r'^sitemap\.xml$', sitemap, {'sitemaps': sitemaps},
         name='django.contrib.sitemaps.views.sitemap'),
 ]

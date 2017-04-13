@@ -1,0 +1,58 @@
+{% load blog_tags %}
+
+<h2>Highlights</h2>
+
+<p>Welcome to Let's Code Django! There are {% total_posts %} posts so far.</p>
+<p>
+    <a href="{% url 'blog:post_feed' %}">Subscribe to my RSS feed</a>
+</p>
+
+<div class="list-group">
+    <h3>Latest posts</h3>
+    {% show_latest_posts 3 as latest_posts %}
+    {% for post in latest_posts %}
+        <a href="{{ post.get_absolute_url }}" class="list-group-item">
+            <h4 class="list-group-item-heading">{{ post.title }}</h4>
+            <p class="list-group-item-text">
+                By {{ post.author.first_name.0 }}.{{ post.author.last_name }}
+                <span class="pull-right">
+                    <span class="glyphicon glyphicon-heart-empty"></span> {{ post.likes }}
+                    <span class="glyphicon glyphicon-eye-open"></span> {{ post.views }}
+                    <span class="glyphicon glyphicon-comment"></span> {{ post.comments.count }}
+                </span>
+            </p>
+        </a>
+    {% endfor %}
+</div>
+
+<div class="list-group">
+    <h3>Most commmented posts</h3>
+    {% get_most_commented_posts 3 as most_commented_posts%}
+    {% for post in most_commented_posts %}
+        <a href="{{ post.get_absolute_url }}" class="list-group-item">
+            <h4 class="list-group-item-heading">{{ post.title }}</h4>
+            <p class="list-group-item-text">
+                By {{ post.author.first_name.0 }}.{{ post.author.last_name }}
+                <span class="pull-right">
+                    <span class="glyphicon glyphicon-heart-empty"></span> {{ post.likes }}
+                    <span class="glyphicon glyphicon-eye-open"></span> {{ post.views }}
+                    <span class="glyphicon glyphicon-comment"></span> {{ post.comments.count }}
+                </span>
+            </p>
+        </a>
+    {% endfor %}
+</div>
+
+{#<ul class="nav nav-pills nav-stacked">#}
+{#    <h3>Latest posts</h3>#}
+{#    {% show_latest_posts 3 %}#}
+{#    <h3>Most commmented posts</h3>#}
+{#    {% get_most_commented_posts as most_commented_posts %}#}
+{#    <ul>#}
+{#        {% for post in most_commented_posts %}#}
+{#            <li>#}
+{#                <a href="{{ post.get_absolute_url }}">{{ post.title }}</a>#}
+{#            </li>#}
+{#        {% endfor %}#}
+{#    </ul>#}
+{#</ul>#}
