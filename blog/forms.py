@@ -17,9 +17,12 @@ class CommentForm(forms.ModelForm):
         model = Comment
         fields = ('name', 'email', 'body')
         widgets = {
-            'name': forms.Textarea(attrs={'class': 'form-control'}),
-            'email': forms.EmailInput(attrs={'class': 'form-control'}),
-            'body': forms.Textarea(attrs={'class': 'form-control'})
+            'name': forms.TextInput(attrs={'class': 'form-control',
+                                          'placeholder': 'Name'}),
+            'email': forms.EmailInput(attrs={'class': 'form-control',
+                                             'placeholder': 'Email'}),
+            'body': forms.Textarea(attrs={'class': 'form-control',
+                                          'placeholder': 'Enter your comment...'})
         }
 
 class SearchForm(forms.Form):
