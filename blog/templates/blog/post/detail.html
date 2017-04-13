@@ -4,56 +4,113 @@
 {% block title %}{{ post.title }}{% endblock %}
 
 {% block content %}
-    <div id="post-detail">
-        <div id="post-content">
-            <h1>{{ post.title }}</h1>
-            <p class="date">
-                Published {{ post.publish }} by {{ post.author }}
-            </p>
-            {{ post.body|markdown }}
-            <p>
-                <a href="{% url 'blog:post_share' post.id %}">
-                    Share this post
-                </a>
-            </p>
-        </div>
-        <div id="similar-posts">
-            <h2>Similar posts</h2>
-            {% for post in similar_posts %}
-                <p>
-                    <a href="{{ post.get_absolute_url }}">{{ post.title }}</a>
-                </p>
-            {% empty %}
-                There are no similar posts yet.
-            {% endfor %}
-        </div>
-        <div id="post-comments">
-            {% with comments.count as total_comments %}
-                <h2>
-                    {{ total_comments }} comment{{ total_comments|pluralize }}
-                </h2>
-            {% endwith %}
-            {% for comment in comments %}
-                <div class="comment">
-                    <p class="info">
-                        Comment {{ forloop.counter }} by {{ comment.name }} |
-                        {{ comment.created }}
-                    </p>
-                    {{ comment.body|linebreaks }}
-                </div>
-            {% empty %}
-                <p>There are no commments yet.</p>
-            {% endfor %}
-            {% if new_comment %}
-            <h2>Your comment has been added.</h2>
-            {% else %}
-            <h2>Add a new comment</h2>
-            <form action="." method="post">
-                {{ comment_form.as_p }}
-                {% csrf_token %}
-                <p><input type="submit" value="Add commment"></p>
-            </form>
-            {% endif %}
+    <div id='post_detail_container' class='container-fluid'>
+        <div class='row'>
+            <div class="col-sm-10 center-block">
+                <h1>{{ post.title }}</h1>
+                <h5><span class="glyphicon glyphicon-time"></span> Published by {{ post.author.first_name }} {{ post.author.last_name }}, {{ post.publish|date }}</h5>
+                <p>{{ post.body|markdown }}</p>
+
+                <h4>Leave a Comment:</h4>
+                <form role="form" action="." method="post">
+                    {% csrf_token %}
+                    <div class="form-group">
+                        {{ comment_form }}
+                    </div>
+                    <button type="submit" class="btn btn-success">Submit</button>
+                </form>
+                <br><br>
+            </div>
         </div>
     </div>
 {% endblock %}
+
+
+
+{#      <p><span class="badge">2</span> Comments:</p><br>#}
+{#      #}
+{#      <div class="row">#}
+{#        <div class="col-sm-2 text-center">#}
+{#          <img src="bandmember.jpg" class="img-circle" height="65" width="65" alt="Avatar">#}
+{#        </div>#}
+{#        <div class="col-sm-10">#}
+{#          <h4>Anja <small>Sep 29, 2015, 9:12 PM</small></h4>#}
+{#          <p>Keep up the GREAT work! I am cheering for you!! Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>#}
+{#          <br>#}
+{#        </div>#}
+{#        <div class="col-sm-2 text-center">#}
+{#          <img src="bird.jpg" class="img-circle" height="65" width="65" alt="Avatar">#}
+{#        </div>#}
+{#        <div class="col-sm-10">#}
+{#          <h4>John Row <small>Sep 25, 2015, 8:25 PM</small></h4>#}
+{#          <p>I am so happy for you man! Finally. I am looking forward to read about your trendy life. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>#}
+{#          <br>#}
+{#          <p><span class="badge">1</span> Comment:</p><br>#}
+{#          <div class="row">#}
+{#            <div class="col-sm-2 text-center">#}
+{#              <img src="bird.jpg" class="img-circle" height="65" width="65" alt="Avatar">#}
+{#            </div>#}
+{#            <div class="col-xs-10">#}
+{#              <h4>Nested Bro <small>Sep 25, 2015, 8:28 PM</small></h4>#}
+{#              <p>Me too! WOW!</p>#}
+{#              <br>#}
+{#            </div>#}
+{#          </div>#}
+{#        </div>#}
+{#      </div>#}
+
+
+{#{% block content %}#}
+{#    <div id="post-detail">#}
+{#        <div id="post-content">#}
+{#            <h1>{{ post.title }}</h1>#}
+{#            <p class="date">#}
+{#                Published {{ post.publish }} by {{ post.author }}#}
+{#            </p>#}
+{#            {{ post.body|markdown }}#}
+{#            <p>#}
+{#                <a href="{% url 'blog:post_share' post.id %}">#}
+{#                    Share this post#}
+{#                </a>#}
+{#            </p>#}
+{#        </div>#}
+{#        <div id="similar-posts">#}
+{#            <h2>Similar posts</h2>#}
+{#            {% for post in similar_posts %}#}
+{#                <p>#}
+{#                    <a href="{{ post.get_absolute_url }}">{{ post.title }}</a>#}
+{#                </p>#}
+{#            {% empty %}#}
+{#                There are no similar posts yet.#}
+{#            {% endfor %}#}
+{#        </div>#}
+{#        <div id="post-comments">#}
+{#            {% with comments.count as total_comments %}#}
+{#                <h2>#}
+{#                    {{ total_comments }} comment{{ total_comments|pluralize }}#}
+{#                </h2>#}
+{#            {% endwith %}#}
+{#            {% for comment in comments %}#}
+{#                <div class="comment">#}
+{#                    <p class="info">#}
+{#                        Comment {{ forloop.counter }} by {{ comment.name }} |#}
+{#                        {{ comment.created }}#}
+{#                    </p>#}
+{#                    {{ comment.body|linebreaks }}#}
+{#                </div>#}
+{#            {% empty %}#}
+{#                <p>There are no commments yet.</p>#}
+{#            {% endfor %}#}
+{#            {% if new_comment %}#}
+{#            <h2>Your comment has been added.</h2>#}
+{#            {% else %}#}
+{#            <h2>Add a new comment</h2>#}
+{#            <form action="." method="post">#}
+{#                {{ comment_form.as_p }}#}
+{#                {% csrf_token %}#}
+{#                <p><input type="submit" value="Add commment"></p>#}
+{#            </form>#}
+{#            {% endif %}#}
+{#        </div>#}
+{#    </div>#}
+{#{% endblock %}#}
