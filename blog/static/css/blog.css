@@ -1,104 +1,70 @@
+@import url(http://fonts.googleapis.com/css?family=Muli);
+
+body {
+    font-family: helvetica, sans-serif;
+    background-color: rgb(250,245,250);
+}
+
+h1, h2, h3, h4, h5 , h6 {
+    font-family: 'Muli', sans-serif;
+    font-weight:normal;
+    color:#2F4F4F;
+}
+
+a {
+    color:#FF6347;
+    text-decoration:none;
+}
+
+a:hover {
+    color:#FF4500 !important;
+    text-decoration: none;
+}
+
 #post_detail_container .form-group {
     padding: 0;
 }
 
-/*@import url(http://fonts.googleapis.com/css?family=Muli);*/
+.label-primary, .btn-primary {
+    background-color: #2F4F4F;
+}
 
-/*body {*/
-    /*margin:0;*/
-    /*padding:0;*/
-    /*font-family:helvetica, sans-serif;*/
-    /*background-color: rgb(250,245,250);*/
-/*}*/
+/*Navigation Bar Styling*/
+
+#navigation_container {
+    background:#DCDCDC;
+    padding: 10px 0;
+    border-bottom: 2px solid #FF6347;
+}
+
+#navigation_container .navbar-brand {
+    font-family: 'Nova Flat', cursive;
+    font-size: 2.5em;
+    word-spacing: -4px;
+    color:#2F4F4F !important;
+}
+
+#navigation_container .navbar-brand .highlight {
+    color: #FF6347;
+}
+
+#navigation_container .nav a {
+    color:#2F4F4F;
+    letter-spacing: 2px;
+}
+
+
+/*Content Styling*/
+
+#content_container{
+    margin-top: 70px;
+}
 
 /*p {*/
     /*line-height: 1.8;*/
 /*}*/
 
-/*a {*/
-    /*color:#FF6347;*/
-    /*text-decoration:none;*/
-/*}*/
 
-/*a:hover {*/
-    /*color:#FF4500;*/
-    /*text-decoration: none;*/
-/*}*/
-
-/*h1, h2, h3, h4, h5 , h6 { font-family: 'Muli', sans-serif; font-weight:normal; color:#2F4F4F}*/
-
-/*h1 {*/
-    /*border-bottom:1px solid #bbb;*/
-    /*padding:0 0 10px 0;*/
-    /*margin:10px 0 20px 0;*/
-/*}*/
-
-/*h2 {*/
-    /*margin:30px 0 20px;*/
-/*}*/
-
-/*ol {*/
-    /*line-height:1.5;*/
-/*}*/
-
-/*#header {*/
-    /*padding:10px 30px;*/
-    /*font-size:20px;*/
-    /*background:#DCDCDC;*/
-    /*color:#2F4F4F;*/
-    /*border-bottom:2px solid #FF6347;*/
-    /*overflow:auto;*/
-/*}*/
-
-/*#header .logo {*/
-    /*padding:4px 10px;*/
-    /*float:left;*/
-    /*color: #2F4F4F;*/
-    /*font-size:30px;*/
-    /*font-family: 'Nova Flat', cursive;*/
-    /*word-spacing: -4px;*/
-
-    /*margin-right:10%;*/
-/*}*/
-
-/*.highlight-text {*/
-    /*font-weight: bold;*/
-    /*color: #FF6347;*/
-/*}*/
-
-/*.highlight-logo-text {*/
-    /*font-family: 'Nova Flat', cursive;*/
-    /*font-size: 34px;*/
-    /*color: #FF6347;*/
-/*}*/
-
-/*#header ul.menu {*/
-    /*list-style:none;*/
-    /*float:left;*/
-    /*margin:0;*/
-    /*padding:0;*/
-/*}*/
-/*#header ul.menu li {*/
-    /*float:left;*/
-    /*padding:15px 10px;*/
-/*}*/
-
-/*#header ul.menu li.selected a, #header ul.menu li.selected a:hover {*/
-    /*color:#00FFFF;*/
-    /*font-weight:bold;*/
-/*}*/
-
-/*#header a {*/
-    /*color:#2F4F4F;*/
-/*}*/
-/*#header a:hover {*/
-    /*color:#FF4500;*/
-/*}*/
-
-/*#header .user {*/
-    /*float:right;*/
-    /*padding-top:15px;*/
-/*}*/
 
 /*#content {*/
     /*float:left;*/
