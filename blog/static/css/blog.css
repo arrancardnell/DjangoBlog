@@ -1,9 +1,5 @@
-.center-block {
-    float: none;
-}
-
-.label {
-    vertical-align: middle;
+#post_detail_container .form-group {
+    padding: 0;
 }
 
 /*@import url(http://fonts.googleapis.com/css?family=Muli);*/
