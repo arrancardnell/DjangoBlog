@@ -7,7 +7,7 @@
     <a href="{% url 'blog:post_feed' %}">Subscribe to my RSS feed</a>
 </p>
 
-<div class="list-group">
+<div id="latest-posts" class="list-group">
     <h3>Latest posts</h3>
     {% show_latest_posts 3 as latest_posts %}
     {% for post in latest_posts %}
@@ -25,7 +25,7 @@
     {% endfor %}
 </div>
 
-<div class="list-group">
+<div id="most-commented-posts" class="list-group">
     <h3>Most commmented posts</h3>
     {% get_most_commented_posts 3 as most_commented_posts%}
     {% for post in most_commented_posts %}

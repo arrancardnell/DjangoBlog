@@ -4,49 +4,55 @@
 {% block title %}{{ post.title }}{% endblock %}
 
 {% block content %}
-    <div id='post_detail_container' class='container-fluid'>
+    <div id='post-detail-container' class='container-fluid'>
         <div class='row'>
-            <div class="col-sm-10 center-block">
-                <h1>{{ post.title }}</h1>
-                <h5>
-                    <span class="glyphicon glyphicon-time"></span> Published by {{ post.author.first_name }} {{ post.author.last_name }}, {{ post.publish|date }}
-                    <span class="glyphicon glyphicon-heart-empty"></span> {{ post.likes }}
-                    <span class="glyphicon glyphicon-eye-open"></span> {{ post.views }}
-                    {% for tag in post.tags.all %}
-                        <span class="label label-primary">{{ tag.name }}</span>
+            <div class="col-sm-8 center-block">
+                <div id="post-header" class="text-center">
+                    <h1>{{ post.title }}</h1>
+                    <h5 id="post-details">
+                        <span class="glyphicon glyphicon-time"></span> Published by {{ post.author.first_name }} {{ post.author.last_name }}, {{ post.publish|date }}
+                        <span class="glyphicon glyphicon-heart-empty stats"></span> {{ post.likes }}
+                        <span class="glyphicon glyphicon-eye-open stats"></span> {{ post.views }}
+                        {% for tag in post.tags.all %}
+                            <span class="tags label label-primary">{{ tag.name }}</span>
+                        {% endfor %}
+                    </h5>
+                    <hr class="hr-style-2">
+                </div>
+                <div id="post-body">
+                    <p>{{ post.body|markdown }}</p>
+                </div>
+                <div id="post-comments">
+                    <h4>Leave a Comment:</h4>
+                    <form action="." method="post">
+                        {% csrf_token %}
+                        <div class="col-sm-6 form-group" style="padding-right: 15px">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                                {{ comment_form.name }}
+                            </div>
+                        </div>
+                        <div class="col-sm-6 form-group" style="padding-left: 15px">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
+                                {{ comment_form.email }}
+                            </div>
+                        </div>
+                        <div class="col-sm-12 form-group">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
+                                {{ comment_form.body }}
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </form>
+                    <br><br>
+
+                    <p><span class="label label-primary">2</span> Comments</p><br>
+                    {% for comment in post.comments.all %}
+                        <div></div>
                     {% endfor %}
-                </h5>
-                <p>{{ post.body|markdown }}</p>
-
-                <h4>Leave a Comment:</h4>
-                <form action="." method="post">
-                    {% csrf_token %}
-                    <div class="col-sm-6 form-group" style="padding-right: 15px">
-                        <div class="input-group">
-                            <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                            {{ comment_form.name }}
-                        </div>
-                    </div>
-                    <div class="col-sm-6 form-group" style="padding-left: 15px">
-                        <div class="input-group">
-                            <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
-                            {{ comment_form.email }}
-                        </div>
-                    </div>
-                    <div class="col-sm-12 form-group">
-                        <div class="input-group">
-                            <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
-                            {{ comment_form.body }}
-                        </div>
-                    </div>
-                    <button type="submit" class="btn btn-primary">Submit</button>
-                </form>
-                <br><br>
-
-                <p><span class="label label-primary">2</span> Comments</p><br>
-                {% for comment in post.comments.all %}
-
-                {% endfor %}
+                </div>
             </div>
         </div>
     </div>

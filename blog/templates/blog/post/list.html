@@ -4,9 +4,9 @@
 {% block title %}Let's Code Django | Blog{% endblock %}
 
 {% block content %}
-    <div id='post_list_container' class='container-fluid'>
+    <div id='post-list-container' class='container-fluid'>
         <div class='row'>
-            <div class="col-sm-3">
+            <div id="sidenav-container" class="col-sm-3">
                 {% include 'blog/post/sidenav.html' %}
             </div>
             <div class="col-sm-9">
@@ -22,9 +22,9 @@
                         <h5>
                             <span class="glyphicon glyphicon-time"></span> Published by {{ post.author.first_name }} {{ post.author.last_name }}, {{ post.publish|date }}
                         </h5>
-                        <h5>
+                        <h5 id="post-details">
                             {% for tag in post.tags.all %}
-                                <a class="label label-primary" href="{% url 'blog:post_list_by_tag' tag.slug %}">{{ tag.name }}</a>
+                                <a class="label label-primary tags" href="{% url 'blog:post_list_by_tag' tag.slug %}">{{ tag.name }}</a>
                             {% endfor %}
                         </h5><br>
                         <p>{{ post.body|markdown|truncatewords_html:60 }}</p><br>
@@ -37,7 +37,9 @@
                         <div class="btn btn-primary">
                             <span class="glyphicon glyphicon-comment"></span> Comments <span class="badge">{{ post.comments.count }}</span>
                         </div>
-                        <hr class="hr-style-2">
+                        {% if not forloop.last %}
+                            <hr class="hr-style-2">
+                        {% endif %}
                     {% endfor %}
                 </div>
             </div>
