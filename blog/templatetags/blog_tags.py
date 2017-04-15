@@ -1,6 +1,8 @@
 from django import template
 from django.db.models import Count
 from django.utils.safestring import mark_safe
+from markdown.extensions.codehilite import CodeHiliteExtension
+
 import markdown
 
 register = template.Library()
@@ -22,4 +24,4 @@ def get_most_commented_posts(count=3):
 
 @register.filter(name='markdown')
 def markdown_format(text):
-    return mark_safe(markdown.markdown(text))
+    return mark_safe(markdown.markdown(text, extensions=[CodeHiliteExtension()]))

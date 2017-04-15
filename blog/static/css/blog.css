@@ -38,16 +38,42 @@ hr.hr-style-2 {
 }
 
 kbd {
-    display: inline-block;
-    margin: 10px 0;
-    padding: 5px;
+    display: block;
+    margin: 20px 0;
+    padding: 5px 10px;
+}
+
+kbd::before {
+    content: "$  ";
+}
+
+kbd .highlight {
+    color: #FF6347;
 }
 
 code {
-    display: inline-block;
-    margin: 10px 0;
-    padding: 5px;
+    display: block;
+    margin: 20px 0;
+    padding: 5px 10px;
+    background: #FFFFFF;
     color: #FF6347;
+}
+
+pre {
+    display: block;
+    margin: 20px 0;
+    padding: 5px 10px;
+}
+
+.codehilitetable .linenos pre {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+.codehilitetable .code pre {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    border-left: none;
 }
 
 /*Generic Styling*/
@@ -78,7 +104,7 @@ code {
 #navigation_container {
     background: #ecf4f4;
     padding: 10px 0;
-    border-bottom: 2px solid #FF6347;
+    border-bottom: 2px solid #2F4F4F;
 }
 
 #navigation_container .navbar-brand {
