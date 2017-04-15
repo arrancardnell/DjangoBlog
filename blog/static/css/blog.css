@@ -37,6 +37,19 @@ hr.hr-style-2 {
     background-image: linear-gradient(to right, #ccc, #2F4F4F, #ccc);
 }
 
+kbd {
+    display: inline-block;
+    margin: 10px 0;
+    padding: 5px;
+}
+
+code {
+    display: inline-block;
+    margin: 10px 0;
+    padding: 5px;
+    color: #FF6347;
+}
+
 /*Generic Styling*/
 
 .label-primary, .btn-primary {
