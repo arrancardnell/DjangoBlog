@@ -7,17 +7,17 @@ body {
 
 h1, h2, h3, h4, h5 , h6 {
     font-family: 'Muli', sans-serif;
-    font-weight:normal;
-    color:#2F4F4F;
+    font-weight: normal;
+    color: #2F4F4F;
 }
 
 a {
-    color:#FF6347;
-    text-decoration:none;
+    color: #FF6347;
+    text-decoration: none;
 }
 
 a:hover {
-    color:#FF4500 !important;
+    color: #FF2B06 !important;
     text-decoration: none;
 }
 
@@ -27,12 +27,23 @@ a:hover {
 
 .label-primary, .btn-primary {
     background-color: #2F4F4F;
+    border-color: #2F4F4F;
+}
+
+.label-primary:hover, .btn-primary:hover {
+    color: #FFFFFF !important;
+    background-color: #213838 !important;
+    border-color: #213838 !important;
+}
+
+.badge {
+    color: #2F4F4F !important;
 }
 
 /*Navigation Bar Styling*/
 
 #navigation_container {
-    background:#DCDCDC;
+    background: #CFE2E2;
     padding: 10px 0;
     border-bottom: 2px solid #FF6347;
 }
