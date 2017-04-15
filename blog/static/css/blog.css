@@ -54,10 +54,16 @@ hr.hr-style-2 {
     color: #2F4F4F !important;
 }
 
+/* Change form control focus colour */
+.form-control:focus, .form-control:hover {
+    border-color: #FF6347;
+    box-shadow:  0 0 6px 1px #FF6347;
+}
+
 /*Navigation Bar Styling*/
 
 #navigation_container {
-    background: #E2EEEE;
+    background: #ecf4f4;
     padding: 10px 0;
     border-bottom: 2px solid #FF6347;
 }
@@ -109,9 +115,18 @@ hr.hr-style-2 {
     font-variant: small-caps !important;
 }
 
+#post-list-container .stat-count {
+    padding-right: 10px;
+}
+
 /*Detail Styling*/
 
-#post-details > .tags {
+#post-detail-container h2 {
+    margin: 20px 0;
+}
+
+#post-detail-container #post-details .label,
+#post-detail-container #post-comments .label {
     vertical-align: 15%;
 }
 
@@ -119,12 +134,29 @@ hr.hr-style-2 {
 #post-detail-container #post-header .tags {
     margin-left: 5px;
 }
+#post-detail-container #post-header .label:hover {
+    background-color: #2F4F4F !important;
+}
 
 #post-detail-container #post-body p {
     font-size: 1.2em;
     line-height: 1.8;
 }
 
-#post-detail-container .form-group {
-    padding: 0;
+#post-detail-container #add-comment h3 {
+    margin: 20px 0;
+}
+
+#post-detail-container #add-comment #comment-name,
+#post-detail-container #add-comment #comment-body {
+    padding-left: 0;
+}
+
+#post-detail-container #add-comment #comment-email,
+#post-detail-container #add-comment #comment-body {
+    padding-right: 0;
+}
+
+#post-detail-container #list-comments h4 {
+    margin-top: 0;
 }

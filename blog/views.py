@@ -9,7 +9,8 @@ from django.shortcuts import render, get_object_or_404
 from haystack.query import SearchQuerySet
 from taggit.models import Tag
 
-from .forms import EmailPostForm, CommentForm, SearchForm, LoginForm, UserRegistrationForm, UserEditForm, ProfileEditForm
+from .forms import EmailPostForm, CommentForm, SearchForm, LoginForm, UserRegistrationForm, UserEditForm, \
+    ProfileEditForm
 from .models import Post, Profile
 
 
@@ -36,6 +37,7 @@ def post_list(request, tag_slug=None):
                   {'page': page,
                    'posts': posts,
                    'tag': tag})
+
 
 def post_detail(request, year, month, day, post):
     post = get_object_or_404(Post, slug=post,
@@ -64,13 +66,13 @@ def post_detail(request, year, month, day, post):
     similar_posts = Post.published.filter(tags__in=post_tags_ids).exclude(id=post.id)
     similar_posts = similar_posts.annotate(same_tags=Count('tags')).order_by('-same_tags', '-publish')[:4]
 
-
     return render(request,
                   'blog/post/detail.html',
                   {'post': post,
                    'comments': comments,
                    'comment_form': comment_form,
                    'similar_posts': similar_posts})
+
 
 def post_share(request, post_id):
     # Retrieve post by ID
@@ -95,6 +97,7 @@ def post_share(request, post_id):
                                                     'form': form,
                                                     'sent': sent,
                                                     'cd': cd})
+
 
 def post_search(request):
     form = SearchForm()
@@ -135,7 +138,7 @@ def user_login(request):
     else:
         form = LoginForm()
 
-    return render(request, 'login.html', {'form': form})
+    return render(request, 'blog/login.html', {'form': form})
 
 
 def register(request):
@@ -149,7 +152,7 @@ def register(request):
             # Save the User object
             new_user.save()
             # Create the user profile
-            profile = Profile.objects.create(user=new_user)
+            Profile.objects.create(user=new_user)
             return render(request, 'blog/register_done.html', {'new_user': new_user})
     else:
         user_form = UserRegistrationForm()
@@ -174,7 +177,8 @@ def edit(request):
         user_form = UserEditForm(instance=request.user)
         profile_form = ProfileEditForm(instance=request.user.profile)
     return render(request, 'blog/edit.html', {'user_form': user_form,
-                                                 'profile_form': profile_form})
+                                              'profile_form': profile_form})
+
 
 def about(request):
     return render(request, 'blog/about.html')

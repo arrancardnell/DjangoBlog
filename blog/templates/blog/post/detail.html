@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% load blog_tags %}
+{% load static %}
 
 {% block title %}{{ post.title }}{% endblock %}
 
@@ -21,36 +22,46 @@
                 </div>
                 <div id="post-body">
                     <p>{{ post.body|markdown }}</p>
+                    <hr class="hr-style-2">
                 </div>
                 <div id="post-comments">
-                    <h4>Leave a Comment:</h4>
-                    <form action="." method="post">
-                        {% csrf_token %}
-                        <div class="col-sm-6 form-group" style="padding-right: 15px">
-                            <div class="input-group">
-                                <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                    <div id="add-comment">
+                        <h3>Leave a Comment:</h3>
+                        <form id="comment-form" action="." method="post">
+                            {% csrf_token %}
+                            <div id="comment-name" class="col-sm-6 form-group">
                                 {{ comment_form.name }}
                             </div>
-                        </div>
-                        <div class="col-sm-6 form-group" style="padding-left: 15px">
-                            <div class="input-group">
-                                <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
+                            <div id="comment-email" class="col-sm-6 form-group">
                                 {{ comment_form.email }}
                             </div>
-                        </div>
-                        <div class="col-sm-12 form-group">
-                            <div class="input-group">
-                                <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
+                            <div id="comment-body" class="col-sm-12 form-group">
                                 {{ comment_form.body }}
                             </div>
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                        </form>
+                        <br><br>
+                    </div>
+                </div>
+                <div id="list-comments">
+                    {% if comments %}
+                        {% with comments.count as total_comments %}
+                            <h4><span class="label label-primary">{{ total_comments }}</span> Comment{{ total_comments|pluralize }}</h4><br>
+                        {% endwith %}
+                    {% endif %}
+                    {% for comment in comments %}
+                        <div class="row">
+                            <div class="col-sm-2 text-center">
+                                <img src="{% static "images/duck-avatar.svg" %}" class="img-circle" height="65" width="65" alt="Avatar">
+                            </div>
+                            <div class="col-sm-10">
+                                <h4>{{ comment.name }} <small>{{ comment.created }}</small></h4>
+                                <p>{{ comment.body }}</p>
+                                <br>
+                            </div>
                         </div>
-                        <button type="submit" class="btn btn-primary">Submit</button>
-                    </form>
-                    <br><br>
-
-                    <p><span class="label label-primary">2</span> Comments</p><br>
-                    {% for comment in post.comments.all %}
-                        <div></div>
+                    {% empty %}
+                        <h4>There are currently no comments.</h4><br>
                     {% endfor %}
                 </div>
             </div>
@@ -58,73 +69,6 @@
     </div>
 {% endblock %}
 
-
-
-      <div class="row">
-        <div class="col-sm-2 text-center">
-          <img src="bandmember.jpg" class="img-circle" height="65" width="65" alt="Avatar">
-        </div>
-        <div class="col-sm-10">
-          <h4>Anja <small>Sep 29, 2015, 9:12 PM</small></h4>
-          <p>Keep up the GREAT work! I am cheering for you!! Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-          <br>
-        </div>
-        <div class="col-sm-2 text-center">
-          <img src="bird.jpg" class="img-circle" height="65" width="65" alt="Avatar">
-        </div>
-        <div class="col-sm-10">
-          <h4>John Row <small>Sep 25, 2015, 8:25 PM</small></h4>
-          <p>I am so happy for you man! Finally. I am looking forward to read about your trendy life. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-          <br>
-          <p><span class="badge">1</span> Comment:</p><br>
-          <div class="row">
-            <div class="col-sm-2 text-center">
-              <img src="bird.jpg" class="img-circle" height="65" width="65" alt="Avatar">
-            </div>
-            <div class="col-xs-10">
-              <h4>Nested Bro <small>Sep 25, 2015, 8:28 PM</small></h4>
-              <p>Me too! WOW!</p>
-              <br>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
-
-{#      <p><span class="badge">2</span> Comments:</p><br>#}
-{#      #}
-{#      <div class="row">#}
-{#        <div class="col-sm-2 text-center">#}
-{#          <img src="bandmember.jpg" class="img-circle" height="65" width="65" alt="Avatar">#}
-{#        </div>#}
-{#        <div class="col-sm-10">#}
-{#          <h4>Anja <small>Sep 29, 2015, 9:12 PM</small></h4>#}
-{#          <p>Keep up the GREAT work! I am cheering for you!! Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>#}
-{#          <br>#}
-{#        </div>#}
-{#        <div class="col-sm-2 text-center">#}
-{#          <img src="bird.jpg" class="img-circle" height="65" width="65" alt="Avatar">#}
-{#        </div>#}
-{#        <div class="col-sm-10">#}
-{#          <h4>John Row <small>Sep 25, 2015, 8:25 PM</small></h4>#}
-{#          <p>I am so happy for you man! Finally. I am looking forward to read about your trendy life. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>#}
-{#          <br>#}
-{#          <p><span class="badge">1</span> Comment:</p><br>#}
-{#          <div class="row">#}
-{#            <div class="col-sm-2 text-center">#}
-{#              <img src="bird.jpg" class="img-circle" height="65" width="65" alt="Avatar">#}
-{#            </div>#}
-{#            <div class="col-xs-10">#}
-{#              <h4>Nested Bro <small>Sep 25, 2015, 8:28 PM</small></h4>#}
-{#              <p>Me too! WOW!</p>#}
-{#              <br>#}
-{#            </div>#}
-{#          </div>#}
-{#        </div>#}
-{#      </div>#}
 
 
 {#{% block content %}#}
