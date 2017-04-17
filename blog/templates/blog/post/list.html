@@ -17,7 +17,7 @@
                 <div id="post-container">
                     {% for post in posts %}
                         <h2>
-                            <a href="{{ post.get_absolute_url }}">{{ post.title }}</a>
+                            <a  class="hover-effect-1" href="{{ post.get_absolute_url }}">{{ post.title }} <span></span></a>
                         </h2>
                         <h5>
                             <span class="glyphicon glyphicon-time"></span> Published by {{ post.author.first_name }} {{ post.author.last_name }}, {{ post.publish|date }}
