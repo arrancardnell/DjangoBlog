@@ -1,10 +1,16 @@
 {% load blog_tags %}
 
-<h2>Highlights</h2>
+<h4 class="text-center"><b>Welcome to <span class="highlight">Let's Code Django!</span></b></h4>
 
-<p>Welcome to Let's Code Django! There are {% total_posts %} posts so far.</p>
+<p>
+    Want to learn Django? Been through a couple of introductory tutorials but unsure what to do next?
+    Find a project you're interested in and Let's Code Django together.
+</p>
 <p>
     <a href="{% url 'blog:post_feed' %}">Subscribe to my RSS feed</a>
+</p>
+<p>
+    There are <span class="highlight">{% total_posts %}</span> posts so far.
 </p>
 
 <div id="latest-posts" class="list-group">

@@ -12,7 +12,7 @@ body {
     background-color: #d6d6d6;
 }
 
-h1, h2, h3, h4, h5 , h6 {
+h1, h2, h3, h4, h5, h6 {
     font-family: 'Muli', sans-serif;
     font-weight: normal;
     color: #333333;
@@ -191,11 +191,19 @@ pre {
 
 /*Content Styling*/
 
-#content_container{
+#content_container {
     margin-top: 80px;
 }
 
 /*Sidenav Styling*/
+
+#sidenav-container {
+    margin-top: 10px;
+}
+
+#sidenav-container .highlight {
+    color: #44CE18;
+}
 
 #sidenav-container .list-group-item {
     background-color: #333333;
