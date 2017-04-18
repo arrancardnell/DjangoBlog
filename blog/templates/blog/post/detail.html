@@ -10,6 +10,8 @@
             <div class="col-sm-8 center-block">
                 <div id="post-header" class="text-center">
                     <h1>{{ post.title }}</h1>
+                    <h4>{{ post.description }}</h4>
+                    <hr class="hr-style-2">
                     <h5 id="post-details">
                         <span class="glyphicon glyphicon-time"></span> Published by {{ post.author.first_name }} {{ post.author.last_name }}, {{ post.publish|date }}
                         <span class="glyphicon glyphicon-heart-empty stats"></span> {{ post.likes }}
@@ -18,10 +20,15 @@
                             <span class="tags label label-primary">{{ tag.name }}</span>
                         {% endfor %}
                     </h5>
-                    <hr class="hr-style-2">
                 </div>
                 <div id="post-body">
                     <p>{{ post.body|markdown }}</p>
+                    {% if previous_post or next_post %}
+                        <ul class="pager">
+                            {% if previous_post %}<li class="previous"><a class="hover-effect-previous" href="{{ previous_post.get_absolute_url }}"><span></span> {{ previous_post }}</a></li>{% endif %}
+                            {% if next_post %}<li class="next"><a class="hover-effect-next" href="{{ next_post.get_absolute_url }}">{{ next_post }} <span></span></a></li>{% endif %}
+                        </ul>
+                    {% endif %}
                     <hr class="hr-style-2">
                 </div>
                 <div id="post-comments">

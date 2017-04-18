@@ -70,9 +70,14 @@ def post_detail(request, year, month, day, post):
     similar_posts = Post.published.filter(tags__in=post_tags_ids).exclude(id=post.id)
     similar_posts = similar_posts.annotate(same_tags=Count('tags')).order_by('-same_tags', '-publish')[:4]
 
+    next_post = Post.objects.exclude(id=post.id).filter(created__gte=post.created).order_by('created').first()
+    previous_post = Post.objects.exclude(id=post.id).filter(created__lte=post.created).order_by('-created').first()
+
     return render(request,
                   'blog/post/detail.html',
                   {'post': post,
+                   'next_post': next_post,
+                   'previous_post': previous_post,
                    'comments': comments,
                    'comment_form': comment_form,
                    'similar_posts': similar_posts})

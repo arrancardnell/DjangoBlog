@@ -1,17 +1,46 @@
+{% load static %}
 {% load blog_tags %}
+{% load social_widgets %}
 
-<h4 class="text-center"><b>Welcome to <span class="highlight">Let's Code Django!</span></b></h4>
+<div id="sidenav-intro">
+    <div class="row">
+        <div class="col-sm-12">
+            <h4 class="text-center"><b>Welcome to <span class="highlight">Let's Code Django!</span></b></h4>
+            <p class="text-justify">
+                Want to learn Django? Been through a couple of introductory tutorials but unsure what to do next?
+                Find a project you're interested in and Let's Code Django together.
+            </p>
+            <p>
+                <a href="{% url 'blog:post_feed' %}">Subscribe to my RSS feed</a>
+            </p>
+        </div>
+    </div>
+    <div id="sidenav-social" class="row">
+        <div class="col-xs-2 social-btn">
+            <a href="https://www.facebook.com/sharer/sharer.php?u=http://letscodedjango.com"><img class="img-responsive" src="{% static 'images/facebook.png' %}"></a>
+        </div>
+        <div class="col-xs-2 social-btn">
+            <a href="#"><img class="img-responsive" src="{% static 'images/twitter.png' %}"></a>
+        </div>
+        <div class="col-xs-2 social-btn">
+            <a href="#"><img class="img-responsive" src="{% static 'images/pinterest.png' %}"></a>
+        </div>
+        <div class="col-xs-2 social-btn">
+            <a href="https://plus.google.com/share?url=http://letscodedjango.com"><img class="img-responsive" src="{% static 'images/google.png' %}"></a>
+        </div>
+        <div class="col-xs-2 social-btn">
+            <a href="#"><img class="img-responsive" src="{% static 'images/linkedin.png' %}"></a>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12">
+            <p id="post-count">
+                There are <span class="highlight">{% total_posts %}</span> posts so far.
+            </p>
+        </div>
+    </div>
+</div>
 
-<p>
-    Want to learn Django? Been through a couple of introductory tutorials but unsure what to do next?
-    Find a project you're interested in and Let's Code Django together.
-</p>
-<p>
-    <a href="{% url 'blog:post_feed' %}">Subscribe to my RSS feed</a>
-</p>
-<p>
-    There are <span class="highlight">{% total_posts %}</span> posts so far.
-</p>
 
 <div id="latest-posts" class="list-group">
     <h3>Latest posts</h3>

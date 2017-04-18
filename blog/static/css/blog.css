@@ -9,7 +9,7 @@ html {
 
 body {
     font-family: helvetica, sans-serif;
-    background-color: #d6d6d6;
+    background-color: #D6D6D6;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -52,8 +52,17 @@ kbd {
     padding: 5px 10px;
 }
 
-kbd::before {
+kbd:not(.virtualenv)::before {
     content: "$  ";
+}
+
+kbd.virtualenv-example::before {
+    content: "";
+}
+
+kbd.virtualenv::before,
+span.virtualenv::before {
+    content: "(env) $  "
 }
 
 kbd .highlight {
@@ -61,17 +70,19 @@ kbd .highlight {
 }
 
 code {
-    display: block;
-    margin: 20px 0;
-    padding: 5px 10px;
-    background: #FFFFFF;
+    padding: 5px;
     color: #44CE18;
 }
 
 pre {
     display: block;
+    font-size: 1.1em;
     margin: 20px 0;
     padding: 5px 10px;
+}
+
+mark {
+    color: #333333;
 }
 
 .codehilitetable .linenos pre {
@@ -100,6 +111,19 @@ pre {
     box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.2), 0 4px 10px 0 rgba(0, 0, 0, 0.25);
 }
 
+.pager .next a,
+.pager .previous a {
+    background-color: #D6D6D6;
+    color: #44CE18;
+    border-color: #D6D6D6;
+    border-radius: 4px;
+}
+
+.pager .next a:hover,
+.pager .previous a:hover {
+    background-color: #D6D6D6;
+}
+
 .hover-effect-1 span {
     cursor: pointer;
     display: inline;
@@ -123,6 +147,64 @@ pre {
 .hover-effect-1:hover span:after {
     opacity: 1;
     right: 0;
+}
+
+.hover-effect-previous {
+    padding-left: 0 !important;
+}
+
+.hover-effect-next {
+    padding-right: 0 !important;
+}
+
+.hover-effect-next span {
+    cursor: pointer;
+    display: inline;
+    position: relative;
+    transition: 0.5s;
+}
+
+.hover-effect-next span:after {
+    content: '\00bb';
+    position: absolute;
+    vertical-align: middle;
+    opacity: 0;
+    right: 0;
+    transition: 0.5s;
+}
+
+.hover-effect-next:hover span {
+    padding-right: 15px;
+}
+
+.hover-effect-next:hover span:after {
+    opacity: 1;
+    right: 0;
+}
+
+.hover-effect-previous span {
+    cursor: pointer;
+    display: inline;
+    position: relative;
+    transition: 0.5s;
+}
+
+.hover-effect-previous span:before {
+    content: '\00ab';
+    position: absolute;
+    vertical-align: middle;
+    opacity: 0;
+    left: 0;
+    transition: 0.5s;
+}
+
+.hover-effect-previous:hover span {
+    padding-left: 15px;
+}
+
+.hover-effect-previous:hover span:before {
+    opacity: 1;
+    left: 0;
 }
 
 .label-primary, .btn-primary {
@@ -201,8 +283,28 @@ pre {
     margin-top: 10px;
 }
 
+#sidenav-container #sidenav-social {
+    margin-left: 0;
+}
+
+#sidenav-container #post-count {
+    margin: 10px 0;
+}
+
+#sidenav-container .social-btn {
+    padding: 0;
+}
+
+#sidenav-container .social-btn:hover {
+    opacity: 0.7;
+}
+
 #sidenav-container .highlight {
     color: #44CE18;
+}
+
+#sidenav-container #latest-posts h3 {
+    margin: 10px 0;
 }
 
 #sidenav-container .list-group-item {
@@ -239,6 +341,10 @@ pre {
 
 #post-detail-container h2 {
     margin: 20px 0;
+}
+
+#post-detail-container #post-details {
+    margin-bottom: 40px;
 }
 
 #post-detail-container #post-details .label,
