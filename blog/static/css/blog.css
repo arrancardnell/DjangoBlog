@@ -347,6 +347,11 @@ mark {
     margin-bottom: 40px;
 }
 
+#post-detail-container #post-details .glyphicon,
+#post-detail-container #post-details .label {
+    margin: 5px 0;
+}
+
 #post-detail-container #post-details .label,
 #post-detail-container #post-comments .label {
     vertical-align: 15%;
