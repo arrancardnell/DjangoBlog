@@ -10,7 +10,7 @@ function triggerMessage(status, message) {
     if ($messages.length) {
         $messages.each(function () {
             var $this = $(this);
-            $this.animate({'top': '-200px'}, 500, function ($this) {
+            $this.animate({'top': '-200px'}, 500, function () {
                 $this.remove()
             });
         })
