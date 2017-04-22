@@ -24,7 +24,7 @@ function triggerMessage(status, message) {
 
     // Add the element to the message container and animate it into view
     $messageContainer.append($messageAlert.append($messageClose));
-    $messageAlert.animate({'top':'160px'}, 500);
+    $messageAlert.animate({'top':'90px'}, 500);
 
     // Remove the message after 4 seconds
     setTimeout(function(){
@@ -40,7 +40,7 @@ $(function() {
 
     // Display any messages have been added to the template context on page load
     if ($messages.length) {
-        var top = '160';
+        var top = 90;
 
         $messages.each(function () {
             var $this = $(this);
@@ -50,8 +50,8 @@ $(function() {
             top += 61;
 
             // Remove the message after 4 seconds
-            setTimeout(function($this){
-                $this.animate({'top': '-200px'}, 500, function ($this) {
+            setTimeout(function(){
+                $this.animate({'top': '-200px'}, 500, function () {
                     $this.remove()
                 })
             }, 4000);

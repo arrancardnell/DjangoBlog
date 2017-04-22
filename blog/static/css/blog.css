@@ -208,6 +208,8 @@ mark {
     left: 0;
 }
 
+/* Bootstrap styling */
+
 .label-primary, .btn-primary {
     background-color: #333333;
     border-color: #333333;
@@ -241,6 +243,12 @@ mark {
     background:-o-linear-gradient(top, #333333, #5C5C5C);
     background:-ms-linear-gradient(top, #333333, #5C5C5C);
     background: linear-gradient(top, #333333, #5C5C5C)
+}
+
+.alert-error {
+    color: #a94442;
+    background-color: #f2dede;
+    border-color: #ebccd1;
 }
 
 /*Navigation Bar Styling*/

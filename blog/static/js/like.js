@@ -17,7 +17,6 @@ $(function () {
                 if (data['status'] === 'ok') {
                     if (data['liked']) {
                         $this.find('span.glyphicon').removeClass('glyphicon-heart-empty').addClass('glyphicon-heart')
-                        triggerMessage('success', 'Yay')
                     } else {
                         $this.find('span.glyphicon').removeClass('glyphicon-heart').addClass('glyphicon-heart-empty')
                     }
