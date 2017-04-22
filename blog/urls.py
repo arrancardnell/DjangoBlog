@@ -4,6 +4,9 @@ from . import views
 from .feeds import LatestPostsFeed
 
 urlpatterns = [
+    #ajax views
+    url(r'ajax/post-like/$', views.post_like, name='post_like'),
+
     # post views
     url(r'^$', views.post_list, name='post_list'),
     url(r'^tag/(?P<tag_slug>[-\w]+)$', views.post_list, name='post_list_by_tag'),

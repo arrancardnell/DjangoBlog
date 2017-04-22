@@ -6,9 +6,6 @@
 {% block content %}
     <div id='post-list-container' class='container-fluid'>
         <div class='row'>
-            <div id="sidenav-container" class="col-sm-3">
-                {% include 'blog/post/sidenav.html' %}
-            </div>
             <div class="col-sm-9">
                 <div id="recent-posts">
                     <h5>Recent Posts</h5>
@@ -43,6 +40,9 @@
                         {% endif %}
                     {% endfor %}
                 </div>
+            </div>
+            <div id="sidenav-container" class="col-sm-3">
+                {% include 'blog/post/sidenav.html' %}
             </div>
         </div>
     </div>

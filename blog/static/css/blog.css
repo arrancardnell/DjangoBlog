@@ -115,6 +115,7 @@ mark {
 .pager .previous a {
     background-color: #D6D6D6;
     color: #44CE18;
+    font-size: 1.2em;
     border-color: #D6D6D6;
     border-radius: 4px;
 }
@@ -271,6 +272,15 @@ mark {
     color: #44CE18 !important;
 }
 
+/*Messages Styling*/
+#messages-container .alert {
+    position:fixed;
+    top:-200px;
+    left:30%;
+    right:30%;
+    z-index:100;
+}
+
 /*Content Styling*/
 
 #content_container {
@@ -369,6 +379,20 @@ mark {
 #post-detail-container #post-body p {
     font-size: 1.2em;
     line-height: 1.8;
+}
+
+#post-detail-container #post-like-share {
+    font-size: 1.8em !important;
+}
+
+#post-detail-container #post-like-share .glyphicon {
+    padding-right: 20px;
+    color: #333333 !important;
+}
+
+#post-detail-container #post-like-share .glyphicon:hover {
+    padding-right: 20px;
+    color: #44CE18 !important;
 }
 
 #post-detail-container #add-comment h3 {

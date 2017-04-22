@@ -4,14 +4,36 @@ from django.contrib.auth.decorators import login_required
 from django.core.mail import send_mail
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.db.models import Count
-from django.http import HttpResponse
-from django.shortcuts import render, get_object_or_404
+from django.http import HttpResponse, JsonResponse
+from django.shortcuts import redirect, render, get_object_or_404
 from haystack.query import SearchQuerySet
 from taggit.models import Tag
 
 from .forms import EmailPostForm, CommentForm, SearchForm, LoginForm, UserRegistrationForm, UserEditForm, \
     ProfileEditForm
 from .models import Post, Profile
+
+
+def post_like(request):
+    if request.is_ajax() and request.method == 'POST':
+        try:
+            post = Post.objects.get(id=request.POST.get('id'))
+        except Post.DoesNotExist:
+            return JsonResponse({'status': 'ko'})
+
+        if request.session.get('liked'):
+            post.likes -= 1
+            request.session['liked'] = False
+        else:
+            post.likes += 1
+            request.session['liked'] = True
+
+        post.save()
+
+        return JsonResponse({'status': 'ok',
+                             'liked': request.session['liked']})
+    else:
+        return JsonResponse({'status': 'ko'})
 
 
 def post_list(request, tag_slug=None):
@@ -62,6 +84,8 @@ def post_detail(request, year, month, day, post):
             new_comment.post = post
             # Save the comment to the database
             new_comment.save()
+
+            return redirect(post)
     else:
         comment_form = CommentForm()
 

@@ -54,6 +54,34 @@
         </div>
     </nav>
 
+    <!-- Messages -->
+    <div id="messages-container">
+        {% if messages %}
+            {% for message in messages %}
+                <div class="alert alert-{{ message.level_tag }} alert-dismissable">
+                    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                    <i class="fa fa-check"></i>{{ message|safe }}
+                </div>
+            {% endfor %}
+        {% endif %}
+    </div>
+
+{#    <!-- Messages -->#}
+{#    <div id="messages-container">#}
+{#        {% if messages %}#}
+{#            <div class="row">#}
+{#                {% for message in messages %}#}
+{#                    <div class="col-sm-8 text-center center-block">#}
+{#                        <div class="alert alert-{{ message.level_tag }} alert-dismissable">#}
+{#                            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>#}
+{#                            <i class="fa fa-check"></i>{{ message|safe }}#}
+{#                        </div>#}
+{#                    </div>#}
+{#                {% endfor %}#}
+{#            </div>#}
+{#        {% endif %}#}
+{#    </div>#}
+
     <div id="content_container">
         {% block content %}{% endblock %}
     </div>
@@ -68,18 +96,9 @@
         </div>
     </footer>
 </body>
+
 {#<body>#}
 {#    <div id="header">#}
-{#        <span class="logo">Let's <span class="highlight-logo-text">Code</span> Django</span>#}
-{#            <ul class="menu">#}
-{#                <li {% if section == "post_list" %}class="selected"{% endif %}>#}
-{#                    <a href="{% url 'blog:post_list' %}">Blog</a>#}
-{#                </li>#}
-{#                <li {% if section == "about" %}class="selected"{% endif %}>#}
-{#                    <a href="{% url 'blog:about' %}">About</a>#}
-{#                </li>#}
-{#            </ul>#}
-{##}
 {#        <span class="user">#}
 {#            {% if request.user.is_authenticated %}#}
 {#                Hello {{ request.user.first_name }},#}
@@ -91,19 +110,8 @@
 {#            {% endif %}#}
 {#        </span>#}
 {#    </div>#}
-{#    {% if messages %}#}
-{#        <ul class="messages">#}
-{#            {% for message in messages %}#}
-{#                <li class="{{ message.tags }}">#}
-{#                    {{ message|safe }}#}
-{#                        <a href="#" class="close">x</a>#}
-{#                </li>#}
-{#            {% endfor %}#}
-{#        </ul>#}
-{#    {% endif %}#}
-{#    {% block content %}{% endblock %}#}
-{#    {% block sidebar %}{% endblock %}#}
 {#</body>#}
+
 </html>
 
 <!-- Latest compiled and minified JQuery -->
@@ -111,3 +119,11 @@
 
 <!-- Latest compiled and minified JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+<!-- JS Cookie -->
+<script src="{% static 'js/js-cookie.js' %}"></script>
+<script src="{% static 'js/csrf_token.js' %}"></script>
+<script src="{% static 'js/blog.js' %}"></script>
+
+<!--Custom JS-->
+{% block script %}{% endblock %}

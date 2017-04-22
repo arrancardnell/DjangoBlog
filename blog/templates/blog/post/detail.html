@@ -29,6 +29,10 @@
                             {% if next_post %}<li class="next"><a class="hover-effect-next" href="{{ next_post.get_absolute_url }}">{{ next_post }} <span></span></a></li>{% endif %}
                         </ul>
                     {% endif %}
+                    <p id="post-like-share" class="text-center">
+                        Like <a data-id="{{ post.id }}" class="post-like" href="#"><span class="glyphicon {% if request.session.liked %}glyphicon-heart{% else %}glyphicon-heart-empty{% endif %}"></span></a>
+                        Share <a class="post-share" href="#"><span class="glyphicon glyphicon-share"></span></a>
+                    </p>
                     <hr class="hr-style-2">
                 </div>
                 <div id="post-comments">
@@ -76,6 +80,9 @@
     </div>
 {% endblock %}
 
+{% block script %}
+    <script src="{% static 'js/like.js' %}"></script>
+{% endblock %}
 
 
 {#{% block content %}#}
