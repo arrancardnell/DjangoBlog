@@ -5,75 +5,144 @@
 {% block title %}{{ post.title }}{% endblock %}
 
 {% block content %}
-    <div id='post-detail-container' class='container-fluid'>
-        <div class='row'>
-            <div class="col-sm-8 center-block">
-                <div id="post-header" class="text-center">
-                    <h1>{{ post.title }}</h1>
-                    <h4>{{ post.description }}</h4>
-                    <hr class="hr-style-2">
-                    <h5 id="post-details">
-                        <span class="glyphicon glyphicon-time"></span> Published by {{ post.author.first_name }} {{ post.author.last_name }}, {{ post.publish|date }}
-                        <span class="glyphicon glyphicon-heart-empty stats"></span> {{ post.likes }}
-                        <span class="glyphicon glyphicon-eye-open stats"></span> {{ post.views }}
-                        {% for tag in post.tags.all %}
-                            <span class="tags label label-primary">{{ tag.name }}</span>
+    <div id='post-detail-container'>
+        <div class='container-fluid'>
+            <div class='row'>
+                <div class="col-sm-8 center-block">
+                    <div id="post-header" class="text-center">
+                        <h1>{{ post.title }}</h1>
+                        <h4>{{ post.description }}</h4>
+                        <hr class="hr-style-2">
+                        <h5 id="post-details">
+                            <span class="glyphicon glyphicon-time"></span> Published by {{ post.author.first_name }} {{ post.author.last_name }}, {{ post.publish|date }}
+                            <span class="glyphicon glyphicon-heart-empty stats"></span> {{ post.likes }}
+                            <span class="glyphicon glyphicon-eye-open stats"></span> {{ post.views }}
+                            {% for tag in post.tags.all %}
+                                <span class="tags label label-primary">{{ tag.name }}</span>
+                            {% endfor %}
+                        </h5>
+                    </div>
+                    <div id="post-body">
+                        <p>{{ post.body|markdown }}</p>
+                        {% if previous_post or next_post %}
+                            <ul class="pager">
+                                {% if previous_post %}<li class="previous"><a class="hover-effect-previous" href="{{ previous_post.get_absolute_url }}"><span></span> {{ previous_post }}</a></li>{% endif %}
+                                {% if next_post %}<li class="next"><a class="hover-effect-next" href="{{ next_post.get_absolute_url }}">{{ next_post }} <span></span></a></li>{% endif %}
+                            </ul>
+                        {% endif %}
+                        <p id="post-like-share" class="text-center">
+                            Like <a data-id="{{ post.id }}" class="post-like" href="#"><span class="glyphicon {% if request.session.liked %}glyphicon-heart{% else %}glyphicon-heart-empty{% endif %}"></span></a>
+                            Share <a class="post-share" href="#" data-toggle="modal" data-target="#share-modal"><span class="glyphicon glyphicon-share"></span></a>
+                        </p>
+                        <hr class="hr-style-2">
+                    <div id="post-comments">
+                        <div id="add-comment">
+                            <h3>Leave a Comment:</h3>
+                            <form id="comment-form" action="." method="post">
+                                {% csrf_token %}
+                                <div id="comment-name" class="col-sm-6 form-group">
+                                    {{ comment_form.name }}
+                                </div>
+                                <div id="comment-email" class="col-sm-6 form-group">
+                                    {{ comment_form.email }}
+                                </div>
+                                <div id="comment-body" class="col-sm-12 form-group">
+                                    {{ comment_form.body }}
+                                </div>
+                                <button type="submit" class="btn btn-primary">Submit</button>
+                            </form>
+                            <br><br>
+                        </div>
+                    </div>
+                    <div id="list-comments">
+                        {% if comments %}
+                            {% with comments.count as total_comments %}
+                                <h4><span class="label label-primary">{{ total_comments }}</span> Comment{{ total_comments|pluralize }}</h4><br>
+                            {% endwith %}
+                        {% endif %}
+                        {% for comment in comments %}
+                            <div class="row">
+                                <div class="col-sm-2 text-center">
+                                    <img src="{% static "images/duck-avatar.svg" %}" class="img-circle" height="65" width="65" alt="Avatar">
+                                </div>
+                                <div class="col-sm-10">
+                                    <h4>{{ comment.name }} <small>{{ comment.created }}</small></h4>
+                                    <p>{{ comment.body|linebreaks }}</p>
+                                    <br>
+                                </div>
+                            </div>
+                        {% empty %}
+                            <h4>There are currently no comments.</h4><br>
                         {% endfor %}
-                    </h5>
-                </div>
-                <div id="post-body">
-                    <p>{{ post.body|markdown }}</p>
-                    {% if previous_post or next_post %}
-                        <ul class="pager">
-                            {% if previous_post %}<li class="previous"><a class="hover-effect-previous" href="{{ previous_post.get_absolute_url }}"><span></span> {{ previous_post }}</a></li>{% endif %}
-                            {% if next_post %}<li class="next"><a class="hover-effect-next" href="{{ next_post.get_absolute_url }}">{{ next_post }} <span></span></a></li>{% endif %}
-                        </ul>
-                    {% endif %}
-                    <p id="post-like-share" class="text-center">
-                        Like <a data-id="{{ post.id }}" class="post-like" href="#"><span class="glyphicon {% if request.session.liked %}glyphicon-heart{% else %}glyphicon-heart-empty{% endif %}"></span></a>
-                        Share <a class="post-share" href="#"><span class="glyphicon glyphicon-share"></span></a>
-                    </p>
-                    <hr class="hr-style-2">
-                </div>
-                <div id="post-comments">
-                    <div id="add-comment">
-                        <h3>Leave a Comment:</h3>
-                        <form id="comment-form" action="." method="post">
-                            {% csrf_token %}
-                            <div id="comment-name" class="col-sm-6 form-group">
-                                {{ comment_form.name }}
-                            </div>
-                            <div id="comment-email" class="col-sm-6 form-group">
-                                {{ comment_form.email }}
-                            </div>
-                            <div id="comment-body" class="col-sm-12 form-group">
-                                {{ comment_form.body }}
-                            </div>
-                            <button type="submit" class="btn btn-primary">Submit</button>
-                        </form>
-                        <br><br>
                     </div>
                 </div>
-                <div id="list-comments">
-                    {% if comments %}
-                        {% with comments.count as total_comments %}
-                            <h4><span class="label label-primary">{{ total_comments }}</span> Comment{{ total_comments|pluralize }}</h4><br>
-                        {% endwith %}
-                    {% endif %}
-                    {% for comment in comments %}
-                        <div class="row">
-                            <div class="col-sm-2 text-center">
-                                <img src="{% static "images/duck-avatar.svg" %}" class="img-circle" height="65" width="65" alt="Avatar">
-                            </div>
-                            <div class="col-sm-10">
-                                <h4>{{ comment.name }} <small>{{ comment.created }}</small></h4>
-                                <p>{{ comment.body }}</p>
-                                <br>
-                            </div>
-                        </div>
-                    {% empty %}
-                        <h4>There are currently no comments.</h4><br>
-                    {% endfor %}
+            </div>
+        </div>
+
+        <!-- Modal -->
+        <div class="modal fade" id="share-modal" role="dialog">
+            <div class="modal-dialog modal-sm">
+
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title text-center">Share</h4>
+                    </div>
+                    <div class="modal-body">
+                        <ul class="media-list">
+                            <li class="media">
+                                <div class="media-left">
+                                    <a href="https://www.facebook.com/sharer/sharer.php?u={{ post.get_absolute_url }}">
+                                        <img src="{% static 'images/facebook.png' %}" class="media-object" style="width:45px">
+                                    </a>
+                                </div>
+                                <div class="media-body">
+                                    <a href="https://www.facebook.com/sharer/sharer.php?u={{ post.get_absolute_url }}">Facebook</a>
+                                </div>
+                            </li>
+                            <li class="media">
+                                <div class="media-left">
+                                    <a href="https://plus.google.com/share?url={{ post.get_absolute_url }}">
+                                        <img src="{% static 'images/google.png' %}" class="media-object" style="width:45px">
+                                    </a>
+                                </div>
+                                <div class="media-body">
+                                    <a href="https://plus.google.com/share?url={{ post.get_absolute_url }}">Google</a>
+                                </div>
+                            </li>
+                            <li class="media">
+                                <div class="media-left">
+                                    <a href="https://twitter.com/home?status={{ post.title|urlencode }}.%20{{ post.description|urlencode }}%20%23Python%20%23Django%20http%3A%2F%2Fletscodedjango.com">
+                                        <img src="{% static 'images/twitter.png' %}" class="media-object" style="width:45px">
+                                    </a>
+                                </div>
+                                <div class="media-body">
+                                    <a href="https://twitter.com/home?status={{ post.title|urlencode }}.%20{{ post.description|urlencode }}%20%23Python%20%23Django%20http%3A%2F%2Fletscodedjango.com">Twitter</a>
+                                </div>
+                            </li>
+                            <li class="media">
+                                <div class="media-left">
+                                    <a href="https://pinterest.com/pin/create/link/?url={{ post.get_absolute_url }}&media={}&description={{ post.title|urlencode }}.%20{{ post.description|urlencode }}">
+                                        <img src="{% static 'images/pinterest.png' %}" class="media-object" style="width:45px">
+                                    </a>
+                                </div>
+                                <div class="media-body">
+                                    <a href="https://pinterest.com/pin/create/link/?url={{ post.get_absolute_url }}&media={}&description={{ post.title|urlencode }}.%20{{ post.description|urlencode }}">Pinterest</a>
+                                </div>
+                            </li>
+                            <li class="media">
+                                <div class="media-left">
+                                    <a href="https://www.linkedin.com/shareArticle?mini=true&url={{ post.get_absolute_url }}&title={{ post.title|urlencode }}.%20{{ post.description|urlencode }}&source={{ post.get_absolute_url }}">
+                                        <img src="{% static 'images/linkedin.png' %}" class="media-object" style="width:45px">
+                                    </a>
+                                </div>
+                                <div class="media-body">
+                                    <a href="https://www.linkedin.com/shareArticle?mini=true&url={{ post.get_absolute_url }}&title={{ post.title|urlencode }}.%20{{ post.description|urlencode }}&source={{ post.get_absolute_url }}">LinkedIn</a>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>
@@ -87,18 +156,6 @@
 
 {#{% block content %}#}
 {#    <div id="post-detail">#}
-{#        <div id="post-content">#}
-{#            <h1>{{ post.title }}</h1>#}
-{#            <p class="date">#}
-{#                Published {{ post.publish }} by {{ post.author }}#}
-{#            </p>#}
-{#            {{ post.body|markdown }}#}
-{#            <p>#}
-{#                <a href="{% url 'blog:post_share' post.id %}">#}
-{#                    Share this post#}
-{#                </a>#}
-{#            </p>#}
-{#        </div>#}
 {#        <div id="similar-posts">#}
 {#            <h2>Similar posts</h2>#}
 {#            {% for post in similar_posts %}#}
@@ -108,34 +165,6 @@
 {#            {% empty %}#}
 {#                There are no similar posts yet.#}
 {#            {% endfor %}#}
-{#        </div>#}
-{#        <div id="post-comments">#}
-{#            {% with comments.count as total_comments %}#}
-{#                <h2>#}
-{#                    {{ total_comments }} comment{{ total_comments|pluralize }}#}
-{#                </h2>#}
-{#            {% endwith %}#}
-{#            {% for comment in comments %}#}
-{#                <div class="comment">#}
-{#                    <p class="info">#}
-{#                        Comment {{ forloop.counter }} by {{ comment.name }} |#}
-{#                        {{ comment.created }}#}
-{#                    </p>#}
-{#                    {{ comment.body|linebreaks }}#}
-{#                </div>#}
-{#            {% empty %}#}
-{#                <p>There are no commments yet.</p>#}
-{#            {% endfor %}#}
-{#            {% if new_comment %}#}
-{#            <h2>Your comment has been added.</h2>#}
-{#            {% else %}#}
-{#            <h2>Add a new comment</h2>#}
-{#            <form action="." method="post">#}
-{#                {{ comment_form.as_p }}#}
-{#                {% csrf_token %}#}
-{#                <p><input type="submit" value="Add commment"></p>#}
-{#            </form>#}
-{#            {% endif %}#}
 {#        </div>#}
 {#    </div>#}
 {#{% endblock %}#}

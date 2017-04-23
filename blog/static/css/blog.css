@@ -251,6 +251,10 @@ mark {
     border-color: #ebccd1;
 }
 
+.modal-open[style] {
+   padding-right: 0 !important;
+}
+
 /*Navigation Bar Styling*/
 
 #navigation_container {
@@ -419,4 +423,42 @@ mark {
 
 #post-detail-container #list-comments h4 {
     margin-top: 0;
+}
+
+#post-detail-container .modal .modal-content {
+    border: 4px solid #333333;
+}
+
+#post-detail-container .modal .modal-content .modal-header {
+    border-bottom: 2px solid #333333;
+}
+
+#post-detail-container .modal .modal-content .modal-body {
+    padding: 10px;
+}
+
+#post-detail-container .modal .media-body {
+    vertical-align: middle;
+}
+
+#post-detail-container .modal li.media:not(:first-child) {
+    margin: 0;
+    padding: 10px 0;
+    border-top: 1px solid #333333;
+}
+
+#post-detail-container .modal li.media:first-child {
+    padding-bottom: 10px;
+}
+
+#post-detail-container .modal li.media:last-child {
+    padding: 10px 0 0;
+}
+
+#post-detail-container .modal .media-body a {
+    color: #333333;
+}
+
+#post-detail-container .modal .media-body a:hover {
+    color: #44CE18 !important;
 }
