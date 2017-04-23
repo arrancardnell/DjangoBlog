@@ -93,22 +93,22 @@
                         <ul class="media-list">
                             <li class="media">
                                 <div class="media-left">
-                                    <a href="https://www.facebook.com/sharer/sharer.php?u={{ post.get_absolute_url }}">
+                                    <a href="https://www.facebook.com/sharer/sharer.php?u={{ url }}{{ post.get_absolute_url }}">
                                         <img src="{% static 'images/facebook.png' %}" class="media-object" style="width:45px">
                                     </a>
                                 </div>
                                 <div class="media-body">
-                                    <a href="https://www.facebook.com/sharer/sharer.php?u={{ post.get_absolute_url }}">Facebook</a>
+                                    <a href="https://www.facebook.com/sharer/sharer.php?u={{ url }}{{ post.get_absolute_url }}">Facebook</a>
                                 </div>
                             </li>
                             <li class="media">
                                 <div class="media-left">
-                                    <a href="https://plus.google.com/share?url={{ post.get_absolute_url }}">
+                                    <a href="https://plus.google.com/share?url={{ url }}{{ post.get_absolute_url }}">
                                         <img src="{% static 'images/google.png' %}" class="media-object" style="width:45px">
                                     </a>
                                 </div>
                                 <div class="media-body">
-                                    <a href="https://plus.google.com/share?url={{ post.get_absolute_url }}">Google</a>
+                                    <a href="https://plus.google.com/share?url={{ url }}{{ post.get_absolute_url }}">Google</a>
                                 </div>
                             </li>
                             <li class="media">
@@ -123,22 +123,22 @@
                             </li>
                             <li class="media">
                                 <div class="media-left">
-                                    <a href="https://pinterest.com/pin/create/link/?url={{ post.get_absolute_url }}&media={}&description={{ post.title|urlencode }}.%20{{ post.description|urlencode }}">
+                                    <a href="https://pinterest.com/pin/create/link/?url={{ url }}{{ post.get_absolute_url }}&media={}&description={{ post.title|urlencode }}.%20{{ post.description|urlencode }}">
                                         <img src="{% static 'images/pinterest.png' %}" class="media-object" style="width:45px">
                                     </a>
                                 </div>
                                 <div class="media-body">
-                                    <a href="https://pinterest.com/pin/create/link/?url={{ post.get_absolute_url }}&media={}&description={{ post.title|urlencode }}.%20{{ post.description|urlencode }}">Pinterest</a>
+                                    <a href="https://pinterest.com/pin/create/link/?url={{ url }}{{ post.get_absolute_url }}&media={}&description={{ post.title|urlencode }}.%20{{ post.description|urlencode }}">Pinterest</a>
                                 </div>
                             </li>
                             <li class="media">
                                 <div class="media-left">
-                                    <a href="https://www.linkedin.com/shareArticle?mini=true&url={{ post.get_absolute_url }}&title={{ post.title|urlencode }}.%20{{ post.description|urlencode }}&source={{ post.get_absolute_url }}">
+                                    <a href="https://www.linkedin.com/shareArticle?mini=true&url={{ url }}{{ post.get_absolute_url }}&title={{ post.title|urlencode }}.%20{{ post.description|urlencode }}&source={{ post.get_absolute_url }}">
                                         <img src="{% static 'images/linkedin.png' %}" class="media-object" style="width:45px">
                                     </a>
                                 </div>
                                 <div class="media-body">
-                                    <a href="https://www.linkedin.com/shareArticle?mini=true&url={{ post.get_absolute_url }}&title={{ post.title|urlencode }}.%20{{ post.description|urlencode }}&source={{ post.get_absolute_url }}">LinkedIn</a>
+                                    <a href="https://www.linkedin.com/shareArticle?mini=true&url={{ url }}{{ post.get_absolute_url }}&title={{ post.title|urlencode }}.%20{{ post.description|urlencode }}&source={{ post.get_absolute_url }}">LinkedIn</a>
                                 </div>
                             </li>
                         </ul>

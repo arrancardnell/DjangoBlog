@@ -97,9 +97,11 @@ def post_detail(request, year, month, day, post):
     next_post = Post.objects.exclude(id=post.id).filter(created__gte=post.created).order_by('created').first()
     previous_post = Post.objects.exclude(id=post.id).filter(created__lte=post.created).order_by('-created').first()
 
+    url = request.build_absolute_uri('/').rstrip('/')
     return render(request,
                   'blog/post/detail.html',
-                  {'post': post,
+                  {'url': url,
+                   'post': post,
                    'next_post': next_post,
                    'previous_post': previous_post,
                    'comments': comments,
