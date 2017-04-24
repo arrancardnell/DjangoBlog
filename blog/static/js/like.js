@@ -21,12 +21,12 @@ $(function () {
                         $this.find('span.glyphicon').removeClass('glyphicon-heart').addClass('glyphicon-heart-empty')
                     }
                 } else {
-                    triggerMessage('There was an error. Please try again later.', 'error');
+                    triggerMessage('error', 'There was an error. Please try again later.');
                 }
             },
             // handle a non-successful response
             error: function(xhr, errmsg, err){
-                triggerMessage('There was an error. Please try again later.', 'error');
+                triggerMessage('error', 'There was an error. Please try again later.');
                 console.log(xhr.status + ": " + xhr.responseText);
             }
         })

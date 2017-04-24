@@ -426,7 +426,28 @@ mark {
 }
 
 #post-detail-container .modal .modal-content {
-    border: 4px solid #333333;
+    border: 2px solid #333333;
+}
+
+/* The next three stylings create the vertical alignment of the modal */
+#post-detail-container .modal {
+    text-align:center;
+}
+
+/* Fake psuedo element that allows vertical alignment */
+#post-detail-container .modal:before {
+    content: "";
+    text-align: center;
+    display: inline-block;
+    vertical-align: middle;
+    height: 100%;
+}
+
+#post-detail-container .modal-dialog {
+    display: inline-block;
+    vertical-align: middle;
+    margin: auto;
+    text-align: left;
 }
 
 #post-detail-container .modal .modal-content .modal-header {
@@ -444,7 +465,6 @@ mark {
 #post-detail-container .modal li.media:not(:first-child) {
     margin: 0;
     padding: 10px 0;
-    border-top: 1px solid #333333;
 }
 
 #post-detail-container .modal li.media:first-child {
@@ -453,6 +473,10 @@ mark {
 
 #post-detail-container .modal li.media:last-child {
     padding: 10px 0 0;
+}
+
+#post-detail-container .modal .media-left a:hover {
+    opacity: 0.7;
 }
 
 #post-detail-container .modal .media-body a {
