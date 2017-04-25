@@ -31,7 +31,8 @@
                             </ul>
                         {% endif %}
                         <p id="post-like-share" class="text-center">
-                            Like <a data-id="{{ post.id }}" class="post-like" href="#"><span class="glyphicon {% if request.session.liked %}glyphicon-heart{% else %}glyphicon-heart-empty{% endif %}"></span></a>
+                            {% get_like_session post.id as liked %}
+                            Like <a data-id="{{ post.id }}" class="post-like" href="#"><span class="glyphicon {% if liked %}glyphicon-heart{% else %}glyphicon-heart-empty{% endif %}"></span></a>
                             Share <a class="post-share" href="#" data-toggle="modal" data-target="#share-modal"><span class="glyphicon glyphicon-share"></span></a>
                         </p>
                         <hr class="hr-style-2">

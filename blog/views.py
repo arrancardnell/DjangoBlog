@@ -16,22 +16,24 @@ from .models import Post, Profile
 
 def post_like(request):
     if request.is_ajax() and request.method == 'POST':
+        post_id = request.POST.get('id')
+
         try:
-            post = Post.objects.get(id=request.POST.get('id'))
+            post = Post.objects.get(id=post_id)
         except Post.DoesNotExist:
             return JsonResponse({'status': 'ko'})
 
-        if request.session.get('liked'):
+        if request.session.get('liked_{}'.format(post_id)):
             post.likes -= 1
-            request.session['liked'] = False
+            request.session['liked_{}'.format(post_id)] = False
         else:
             post.likes += 1
-            request.session['liked'] = True
+            request.session['liked_{}'.format(post_id)] = True
 
         post.save()
 
         return JsonResponse({'status': 'ok',
-                             'liked': request.session['liked']})
+                             'liked': request.session['liked_{}'.format(post_id)]})
     else:
         return JsonResponse({'status': 'ko'})
 

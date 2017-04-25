@@ -10,7 +10,7 @@ $(function () {
         $.ajax({
             url: '/blog/ajax/post-like/',
             type: 'POST',
-            data: {id: $(this).data('id')},
+            data: {id: $this.data('id')},
 
             // handle a successful response
             success: function (data) {
