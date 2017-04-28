@@ -85,20 +85,36 @@ mark {
     color: #333333;
 }
 
-.codehilitetable .linenos pre {
-    border-top-right-radius: 0;
-    border-bottom-right-radius: 0;
-}
-
-.codehilitetable .code {
+.codehilitetable {
+    table-layout: fixed;
     width: 100%;
+    white-space: nowrap;
+    border-collapse: collapse;
+
+}
+.codehilitetable td {
+    white-space: nowrap;
+    overflow: hidden;
 }
 
+/* Column widths are based on these cells */
+.codehilitetable .linenos {
+    vertical-align: top;
+    text-align: right;
+    width: 4%;
+
+}
+.codehilitetable .code {
+    width: 96%;
+}
+
+.codehilitetable .linenos pre,
 .codehilitetable .code pre {
-    border-top-left-radius: 0;
-    border-bottom-left-radius: 0;
-    border-left: none;
-    width: auto;
+    border-radius: 0;
+}
+
+.codehilitetable .linenos pre {
+    padding: 5px 4px;
 }
 
 /*Generic Styling*/
