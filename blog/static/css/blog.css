@@ -90,10 +90,15 @@ mark {
     border-bottom-right-radius: 0;
 }
 
+.codehilitetable .code {
+    width: 100%;
+}
+
 .codehilitetable .code pre {
     border-top-left-radius: 0;
     border-bottom-left-radius: 0;
     border-left: none;
+    width: auto;
 }
 
 /*Generic Styling*/
@@ -429,25 +434,13 @@ mark {
     border: 2px solid #333333;
 }
 
-/* The next three stylings create the vertical alignment of the modal */
-#post-detail-container .modal {
-    text-align:center;
-}
-
-/* Fake psuedo element that allows vertical alignment */
-#post-detail-container .modal:before {
-    content: "";
-    text-align: center;
-    display: inline-block;
-    vertical-align: middle;
-    height: 100%;
-}
-
 #post-detail-container .modal-dialog {
-    display: inline-block;
-    vertical-align: middle;
-    margin: auto;
-    text-align: left;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
 }
 
 #post-detail-container .modal .modal-content .modal-header {
@@ -485,4 +478,10 @@ mark {
 
 #post-detail-container .modal .media-body a:hover {
     color: #44CE18 !important;
+}
+
+@media (max-width: 768px) {
+  #post-detail-container .modal:before {
+    height: auto;
+  }
 }

@@ -34,4 +34,4 @@ def get_like_session(context, post_id):
 
 @register.filter(name='markdown')
 def markdown_format(text):
-    return mark_safe(markdown.markdown(text, extensions=[CodeHiliteExtension()]))
+    return mark_safe(markdown.markdown(text, extensions=[CodeHiliteExtension(linenums=True)]))
