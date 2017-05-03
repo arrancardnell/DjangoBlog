@@ -70,19 +70,40 @@ kbd .highlight {
 }
 
 code {
-    padding: 5px;
     color: #44CE18;
+    background: #DFF0D8;
 }
 
 pre {
     display: block;
     font-size: 1.1em;
+    white-space: pre-wrap;
     margin: 20px 0;
     padding: 5px 10px;
 }
 
 mark {
     color: #333333;
+}
+
+blockquote {
+    font-size: inherit;
+    background-color: #F5F5F5;
+    border-color: #44CE18;
+}
+
+.code-filename {
+    color: #23670C;
+    background-color: #62E736;
+    margin-bottom: -20px;
+    box-sizing: border-box;
+    border: 1px solid #CCCCCC;
+    padding-left: 4%;
+}
+
+.code-filename p {
+    margin: 0;
+    padding-left: 10px;
 }
 
 .codehilitetable {

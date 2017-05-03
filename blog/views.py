@@ -96,8 +96,10 @@ def post_detail(request, year, month, day, post):
     similar_posts = Post.published.filter(tags__in=post_tags_ids).exclude(id=post.id)
     similar_posts = similar_posts.annotate(same_tags=Count('tags')).order_by('-same_tags', '-publish')[:4]
 
-    next_post = Post.objects.exclude(id=post.id).filter(created__gte=post.created).order_by('created').first()
-    previous_post = Post.objects.exclude(id=post.id).filter(created__lte=post.created).order_by('-created').first()
+    next_post = Post.objects.exclude(id=post.id)\
+        .filter(created__gte=post.created, status='published').order_by('created').first()
+    previous_post = Post.objects.exclude(id=post.id)\
+        .filter(created__lte=post.created, status='published').order_by('-created').first()
 
     url = request.build_absolute_uri('/').rstrip('/')
     return render(request,
